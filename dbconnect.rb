@@ -44,7 +44,7 @@ module TM
 
       result = @db_adapter.exec(command).values
       # binding.pry
-      task = TM::Task.new(result[0][0].to_i, result[0][1], result[0][2].to_i, result[0][3], 'f', creation_date)
+      task = TM::Task.new(result[0][0].to_i, result[0][1], result[0][2].to_i, result[0][3], 'f', creation_date, nil)
       # binding.pry
       return task
     end
@@ -53,7 +53,7 @@ module TM
       command = <<-SQL
         UPDATE tasks
         SET status_done = true
-        WHERE tasks.task_id = '#{tid}';
+        WHERE tasks.task_id = #{tid};
       SQL
 
       @db_adapter.exec(command)
@@ -62,15 +62,16 @@ module TM
     def remaining_tasks(pid)
       command = <<-SQL
         SElECT * FROM tasks
-        where project_id = '#{pid}' AND status_done = 'f';
+        where project_id = #{pid} AND status_done = 'f';
       SQL
 
-      result = @db_adapter.exec(command)
+      result = @db_adapter.exec(command).values
       tasks_left = []
-      result.values.each { |task_data|
-        task = TM::Task.new(pid, task_data[1], task_data[0], task_data[6], task_data[3])
+      result.each { |task_data|
+        task = TM::Task.new(task_data[0].to_i, task_data[1], pid, task_data[3], task_data[5], Time.parse(task_data[6]), task_data[7])
         tasks_left << task
       }
+      # binding.pry
       return tasks_left
     end
 

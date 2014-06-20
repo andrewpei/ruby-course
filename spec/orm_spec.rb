@@ -46,4 +46,22 @@ describe 'ORM' do
     expect(task).to be_a(TM::Task)
   end
 
+  it "returns a list of remaining tasks" do
+    task1 = TM.orm.create_task("do stuff", 1, "critical")
+    task2 = TM.orm.create_task("buy milk", 1, "critical")
+    task3 = TM.orm.create_task("pay strippers", 1, "blocker")
+    task4 = TM.orm.create_task("do hw", 1, "major")
+    TM.orm.complete_task(1)
+
+    result = TM.orm.remaining_tasks(1)
+    task_descs = []
+    result.each { |task|
+      task_descs << task.description
+    }
+    expect(task_descs).to include("pay strippers", "buy milk", "do hw")
+
+  end
+
+
+
 end
