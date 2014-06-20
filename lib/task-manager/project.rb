@@ -2,16 +2,11 @@ class TM::Project
   attr_reader :name, :project_id
   attr_accessor :completed_tasks, :tasks_left
 
-  #implement separate variable which says what place in the queue the task is
 
-  @@proj_id = 0
-
-  def initialize(name)
+  def initialize(id, name)
     @name = name
-    @@proj_id += 1
-    @project_id = @@proj_id
+    @proj_id = id
     @tasks_left, @completed_tasks = {}, {}
-    @task_id = 1
   end
 
   def create_task(priority, description)

@@ -6,5 +6,8 @@ end
 # Require all of our project files
 require_relative 'task-manager/task.rb'
 require_relative 'task-manager/project.rb'
-require 'pry-debugger'
+require_relative 'task-manager/user.rb'
+require './dbconnect.rb'
+require 'pry-byebug'
 require 'io/console'
+require 'pg'

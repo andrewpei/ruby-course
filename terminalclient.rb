@@ -11,7 +11,7 @@ class TerminalClient
     puts "\n"
     self.help
     keep_going = true
-
+    
     while keep_going
       puts ""
       print "Input command >> "
