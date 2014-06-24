@@ -1,9 +1,9 @@
-class TM::Users
-  attr_reader :name
+class TM::User
+  attr_reader :name, :user_id
 
-  def initialize(name)
-    
+  def initialize(uid, name)
+    @user_id = uid
+    @name = name
   end
-
 
 end

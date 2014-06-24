@@ -1,5 +1,5 @@
 class TM::Task
-  attr_reader :proj_id, :task_id, :creation_date
+  attr_reader :proj_id, :task_id, :creation_date, :user_assigned
   attr_accessor :description, :done, :completion_date
 
   @@priority = {
@@ -10,13 +10,14 @@ class TM::Task
     "blocker" => 5
   }
 
-  def initialize(task_id, description, proj_id, priority, done, creation_date, completion_date)
+  def initialize(task_id, description, proj_id, priority, user_assigned, done, creation_date, completion_date)
     @creation_date = creation_date
     @proj_id = proj_id
     @description = description
     @priority = @@priority[priority]
     @task_id = task_id
     @done = done
+    @user_assigned = user_assigned
     @completion_date = completion_date
   end
 
