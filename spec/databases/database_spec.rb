@@ -27,6 +27,7 @@ shared_examples 'a database' do
     end
   end
 
+<<<<<<< HEAD:spec/databases/database_spec.rb
 end
 
 describe Honkr::Databases::InMemory do
@@ -36,3 +37,6 @@ end
 describe Honkr::Databases::SQL do
   it_behaves_like 'a database'
 end
+=======
+end
+>>>>>>> honkr:spec/databases/in_memory_spec.rb

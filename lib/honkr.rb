@@ -16,6 +16,5 @@ require_relative './honkr/entities/honk.rb'
 
 require_relative './honkr/scripts/create_honk.rb'
 require_relative './honkr/scripts/sign_in.rb'
-
-
 require_relative '../config/environments.rb'
+require 'digest'

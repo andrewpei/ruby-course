@@ -9,6 +9,12 @@ module Honkr
         @users_counter = 0
       end
 
+      def create_session(user_id)
+      end
+
+      def get_user_by_session_id(session_id)
+      end
+
       def persist_honk(honk)
         new_id = (@honks_counter += 1)
         attrs = {
@@ -42,9 +48,18 @@ module Honkr
         user.instance_variable_set("@id", new_id)
       end
 
+      def get_user_by_username(username)
+        @users.each { |user_id, user_attr|
+          if user_attr.username == username
+            return User.new(user_attr[:id], user_attr[:username], user_attr[:password_digest])
+          end
+        }
+        return nil
+      end
+
       def get_user(id)
         attrs = @users[id]
-        User.new(attrs[:id], attrs[:username], attrs[:password])
+        User.new(attrs[:id], attrs[:username], attrs[:password_digest])
       end
 
     end
