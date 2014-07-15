@@ -10,7 +10,6 @@ module Honkr
       end
 
       def create_session(user_id)
-        return "my session id"
       end
 
       def get_user_by_session_id(session_id)
