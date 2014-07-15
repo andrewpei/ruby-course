@@ -1,4 +1,3 @@
-
 if ENV['APP_ENV'] == 'development'
   Honkr.db = Honkr::Databases::SQL.new
 else
