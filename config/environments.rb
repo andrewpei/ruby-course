@@ -5,3 +5,7 @@ else
 end
 
 # TODO: ESTABLISH ACTIVE RECORD CONNECTION
+ActiveRecord::Base.establish_connection(
+  :adapter => 'postgresql',
+  :database => 'honkr_test'
+)

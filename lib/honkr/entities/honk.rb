@@ -1,7 +1,8 @@
 module Honkr
   class Honk
 
-    attr_reader :id, :user_id, :content
+    attr_reader :user_id, :content
+    attr_accessor :id
 
     def initialize(id, user_id, content)
       @id = id
